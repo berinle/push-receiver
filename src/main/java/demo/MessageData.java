@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -15,7 +17,7 @@ public class MessageData implements Serializable {
     private Map<String, String> attributes;
 
     public String getData() {
-        return data;
+        return new String(Base64.getDecoder().decode(data.getBytes(StandardCharsets.UTF_8)));
     }
 
     public void setData(String data) {
