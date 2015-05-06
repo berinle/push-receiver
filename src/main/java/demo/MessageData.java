@@ -17,11 +17,11 @@ public class MessageData implements Serializable {
     private Map<String, String> attributes;
 
     public String getData() {
-        return new String(Base64.getDecoder().decode(data.getBytes(StandardCharsets.UTF_8)));
+        return data;
     }
 
     public void setData(String data) {
-        this.data = data;
+        this.data = new String(Base64.getDecoder().decode(data.getBytes(StandardCharsets.UTF_8)));
     }
 
     public Map<String, String> getAttributes() {
